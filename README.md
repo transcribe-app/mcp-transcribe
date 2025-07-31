@@ -21,7 +21,7 @@ Transcribe MCP instantly connects your account to assistants like Claude, Windsu
 🔹 MCP-compatibe AI assistant: Claude Desktop, Cursor, Windsurf, VS Code, Goose, 5ire, or any other
 
 🔹 Get your private MCP integration URL
-- Sign in to the Transcribe [online editor](https://transcribe.com/pseudo/app)
+- Sign in to the Transcribe [online editor](https://transcribe.com/app)
 - Copy your private URL from Automation popup
 
 🔹 Before installing the server, ensure you have Node.js
@@ -98,7 +98,7 @@ List of tools is expanded with each new version.
 ## ⚠️ Troubleshooting
 
 ### "MCP_INTEGRATION_URL environment variable is required"
-- Sign in to the Transcribe [online editor](https://transcribe.com/pseudo/app)
+- Sign in to the Transcribe [online editor](https://transcribe.com/app)
 - Copy your private URL from Automation popup
 - Add it as server's "MCP_INTEGRATION_URL" environment variable in your AI assistant settings
 
