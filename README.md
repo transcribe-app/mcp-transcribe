@@ -58,7 +58,7 @@ During installation, you'll be prompted to configure MCP integration URL. Paste 
 
 1\. Download pre-built Desktop Extension (DXT): [Download DXT](https://transcribe.com/mcp-integration#jumpto=mcp_download_dxt)
 
-2\. Change file of the downloaded extansion to "zip", it should look like "transcribe-com-v***.zip"
+2\. Change extension of the downloaded file, replace "dxt" with "zip". It should look like "transcribe-com-v***.zip"
 
 3\. Unpack zip file to some location
 
