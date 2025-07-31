@@ -1,11 +1,4 @@
 "use strict";
-// Transcribe.com MCP Server
-// Test PP: Покажи мой баланс
-// Test PP: Покажи мой баланс в transcribe.com
-// Test PP: Please transcribe audio at "/Users/ipv6/Documents/Denivip/zzz/Transcribe/conf_2speak_20sec.mp3" in English
-// Test PP: Сконвертируй аудио в файле "/Users/ipv6/Documents/Denivip/zzz/Transcribe/conf_2speak_20sec.mp3" в текст, язык английский
-// Test PP: Сконвертируй аудио в файле “/Users/ipv6/Documents/Denivip/zzz/Transcribe/conf_2speak_20sec.mp3” в текст, язык английский и сохрани в папку Downloads
-// Test PP: Сконвертируй аудио в файле “/Users/ipv6/Documents/Denivip/zzz/Transcribe/conf_2speak_20sec.mp3” в текст, язык английский и сохрани в папку Downloads. Баланс можно не проверять
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -43,8 +36,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// Transcribe.com MCP Server
 const mcp_js_1 = require("@modelcontextprotocol/sdk/server/mcp.js");
 const stdio_js_1 = require("@modelcontextprotocol/sdk/server/stdio.js");
+// import { CallToolResult, McpError, ErrorCode, ReadResourceResult, ResourceLink } from "@modelcontextprotocol/sdk/types.js";
 // import getPath from 'platform-folders'; // Not working in restricted NodeJS envs (chat client)
 const form_data_1 = __importDefault(require("form-data"));
 const zod_1 = require("zod");
@@ -54,12 +49,12 @@ const jsutils = __importStar(require("./jsutils.js"));
 let g_api_url = jsutils.safeStr(process.env["MCP_INTEGRATION_URL"]);
 let g_debug_file = jsutils.safeStr(process.env["MCP_DEBUG_FILE"]);
 let g_max_upload_size = 300 * 1000 * 1000;
-let g_files = {};
+// let g_files:any = {};
 // Create an MCP server
 const mcpServer = new mcp_js_1.McpServer({
     name: 'Transcribe.com-mcp-local-server',
     title: 'Transcribe.com tools',
-    version: '1.0.0'
+    version: '1.0.2' // Auto-replaced
 }, {
     capabilities: {
         logging: {}
@@ -73,10 +68,10 @@ async function clog(message) {
     try {
         // // Testing debug paths
         // if(g_debug_file.length == 0){
-        // 	if(fs.existsSync("/Users/ipv6/Downloads/")){
-        // 		g_debug_file = "/Users/ipv6/Downloads/mcp_dbg.log";
-        // 	}else if(fs.existsSync("/Users/denisbulichenko/Downloads/")){
-        // 		g_debug_file = "/Users/denisbulichenko/Downloads/mcp_dbg.log";
+        // 	if(fs.existsSync("/Users/***/Downloads/")){
+        // 		g_debug_file = "/Users/***/Downloads/mcp_dbg.log";
+        // 	}else if(fs.existsSync("/Users/***/Downloads/")){
+        // 		g_debug_file = "/Users/***/Downloads/mcp_dbg.log";
         // 	}
         // }
         if (g_debug_file.length == 0) {

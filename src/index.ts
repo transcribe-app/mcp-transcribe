@@ -1,14 +1,7 @@
 // Transcribe.com MCP Server
-// Test PP: Покажи мой баланс
-// Test PP: Покажи мой баланс в transcribe.com
-// Test PP: Please transcribe audio at "/Users/ipv6/Documents/Denivip/zzz/Transcribe/conf_2speak_20sec.mp3" in English
-// Test PP: Сконвертируй аудио в файле "/Users/ipv6/Documents/Denivip/zzz/Transcribe/conf_2speak_20sec.mp3" в текст, язык английский
-// Test PP: Сконвертируй аудио в файле “/Users/ipv6/Documents/Denivip/zzz/Transcribe/conf_2speak_20sec.mp3” в текст, язык английский и сохрани в папку Downloads
-// Test PP: Сконвертируй аудио в файле “/Users/ipv6/Documents/Denivip/zzz/Transcribe/conf_2speak_20sec.mp3” в текст, язык английский и сохрани в папку Downloads. Баланс можно не проверять
-
 import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { CallToolResult, McpError, ErrorCode, ReadResourceResult, ResourceLink } from "@modelcontextprotocol/sdk/types.js";
+// import { CallToolResult, McpError, ErrorCode, ReadResourceResult, ResourceLink } from "@modelcontextprotocol/sdk/types.js";
 // import getPath from 'platform-folders'; // Not working in restricted NodeJS envs (chat client)
 import FormData from 'form-data';
 import { z } from "zod";
@@ -19,14 +12,14 @@ import * as jsutils from './jsutils.js';
 let g_api_url = jsutils.safeStr(process.env["MCP_INTEGRATION_URL"]);
 let g_debug_file = jsutils.safeStr(process.env["MCP_DEBUG_FILE"]);
 let g_max_upload_size = 300*1000*1000;
-let g_files:any = {};
+// let g_files:any = {};
 
 // Create an MCP server
 const mcpServer = new McpServer(
 	{
 		name: 'Transcribe.com-mcp-local-server',
 		title: 'Transcribe.com tools',
-		version: '1.0.0'
+		version: '1.0.2' // Auto-replaced
 	}, 
 	{ 
 		capabilities: { 
@@ -43,10 +36,10 @@ async function clog(message:any) {
 	try{
 		// // Testing debug paths
 		// if(g_debug_file.length == 0){
-		// 	if(fs.existsSync("/Users/ipv6/Downloads/")){
-		// 		g_debug_file = "/Users/ipv6/Downloads/mcp_dbg.log";
-		// 	}else if(fs.existsSync("/Users/denisbulichenko/Downloads/")){
-		// 		g_debug_file = "/Users/denisbulichenko/Downloads/mcp_dbg.log";
+		// 	if(fs.existsSync("/Users/***/Downloads/")){
+		// 		g_debug_file = "/Users/***/Downloads/mcp_dbg.log";
+		// 	}else if(fs.existsSync("/Users/***/Downloads/")){
+		// 		g_debug_file = "/Users/***/Downloads/mcp_dbg.log";
 		// 	}
 		// }
 		if(g_debug_file.length == 0){
