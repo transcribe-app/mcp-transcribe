@@ -1,0 +1,21 @@
+{
+  "name": "integr_mcp",
+  "version": "1.0.2",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Skipping, no tests\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Transcribe.com",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.16.0",
+    "form-data": "^4.0.4",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "typescript": "^5.8.3"
+  }
+}
