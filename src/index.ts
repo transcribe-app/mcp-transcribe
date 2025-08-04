@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // Transcribe.com MCP Server
 import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -300,6 +302,8 @@ mcpServer.registerTool('transcribe-file-convert-to-text',
 
 async function main() {
 	clog(["MCP server: Starting", process.versions]);
+	// Access validation: on tool invocatino only
+	// - https://smithery.ai/docs/build/deployments#best-practices
 	// if(api_url.length == 0){
 	// 	// throw new Error('MCP_INTEGRATION_URL environment variable is not set. Please configure the server correctly.');
 	// 	throw new McpError(

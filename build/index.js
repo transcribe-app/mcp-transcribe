@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -324,6 +325,8 @@ mcpServer.registerTool('transcribe-file-convert-to-text', {
 });
 async function main() {
     clog(["MCP server: Starting", process.versions]);
+    // Access validation: on tool invocatino only
+    // - https://smithery.ai/docs/build/deployments#best-practices
     // if(api_url.length == 0){
     // 	// throw new Error('MCP_INTEGRATION_URL environment variable is not set. Please configure the server correctly.');
     // 	throw new McpError(
