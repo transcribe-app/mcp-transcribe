@@ -5,6 +5,9 @@
   "scripts": {
     "test": "echo \"Skipping, no tests\" && exit 1"
   },
+  "bin": {
+    "mcp-transcribe": "build/index.js"
+  },
   "keywords": [],
   "author": "Transcribe.com",
   "license": "MIT",
