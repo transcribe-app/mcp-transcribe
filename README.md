@@ -16,30 +16,21 @@ Transcribe MCP instantly connects your account to assistants like Claude, Windsu
 - 🔋 Wide variety of formats out-of-the-box and Cloud storage for your audio notes and records.
 - 👥 Collaboration support via Transcribe.com teams feature
 
-### 🛠️ Local installation: Prerequisites
-
-🔹 MCP-compatibe AI assistant: Claude Desktop, Cursor, Windsurf, VS Code, Goose, 5ire, or any other
+## 🚀 Local installation: Claude Desktop
 
 🔹 Get your private MCP integration URL
 - Sign in to the Transcribe [online editor](https://transcribe.com/app)
 - Copy your private URL from Automation popup
 
-🔹 Before installing the server, ensure you have Node.js
-- Download from: https://nodejs.org/
-- Verify with: node --version
+🔹 Download pre-built Desktop Extension (DXT): [Download DXT](https://transcribe.com/mcp-integration#jumpto=mcp_download_dxt)
 
-## 🚀 Local installation: Claude Desktop
-
-📦 Download pre-built Desktop Extension (DXT): [Download DXT](https://transcribe.com/mcp-integration#jumpto=mcp_download_dxt)
-
-The DXT includes:
+📦 The DXT includes:
 
 - ✅ One-click installation in Claude Desktop
-- ✅ Automatic dependency management
 - ✅ Secure environment variable configuration
+- ✅ Automatic dependency management
 - ✅ Built-in error handling and debugging
-
-Note: The DXT file is automatically updated for the latest features and fixes.
+- ✅ The DXT file is automatically updated for the latest features and fixes
 
 ### Option 1: Double-Click Installation (Recommended)
 - Double-click the .dxt file
@@ -56,20 +47,23 @@ During installation, you'll be prompted to configure MCP integration URL. Paste 
 
 ## 🚀 Local installation: Other assistants
 
-1\. Download pre-built Desktop Extension (DXT): [Download DXT](https://transcribe.com/mcp-integration#jumpto=mcp_download_dxt)
+🔹 Get your private MCP integration URL
+- Sign in to the Transcribe [online editor](https://transcribe.com/app)
+- Copy your private URL from Automation popup
 
-2\. Change extension of the downloaded file, replace "dxt" with "zip". It should look like "transcribe-com-v***.zip"
+🔹 Before installing the server, ensure you have Node.js
+- Download from: https://nodejs.org/
+- Verify Node with: node --version
+- Verify NPX with: npx --version
 
-3\. Unpack zip file to some location
-
-4\. Add Local Server via your assistantsettings and use this snippet for server setup:
+🔹 Add Local Server via your assistant settings and use this snippet for server setup:
 
 ```
 {
   "key": "transcribe-local",
-  "command": "node",
+  "command": "npx",
   "args": [
-    "<path-to-unpacked-dxt-location>/build/index.js"
+    "args": ["-y", "github:transcribe-app/mcp-transcribe"],
   ],
   "env": {
     "MCP_INTEGRATION_URL": "<your-MCP-integration-URL>"
@@ -77,7 +71,8 @@ During installation, you'll be prompted to configure MCP integration URL. Paste 
 }
 ```
 
-Replace "\<path-to-unpacked-dxt-location\>" and "\<your-MCP-integration-URL\>" with actual path and your private URL.
+### Configuration
+Replace \<your-MCP-integration-URL\> with your private URL.
 
 ---
 
