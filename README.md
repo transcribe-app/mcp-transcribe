@@ -80,11 +80,16 @@ Replace \<your-MCP-integration-URL\> with your private URL.
 
 List of tools is expanded with each new version.
 
-1\. `get-balance`: returns balance of your account.
-
-2\. `convert-to-text`: converts audio to text and returns the text immediately.
+1\. `convert-to-text`: converts audio to text and returns the text immediately.
 - Note: This tool use your time credits.
 - Note: Remote server expect public-accessible URL, Local Server can use both URL and a path to local file in your file system.
+
+2\. `get-balance`: returns balance of your account.
+
+3\. `read-transcriptions`: returns content of ready transcriptions with optional filtering/search.
+
+4\. `update-transcription`: renames or deletes transcriptions in your account at Transcribe.com
+
 
 ## 💡 Security Notes
 

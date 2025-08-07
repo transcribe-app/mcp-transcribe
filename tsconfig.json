@@ -9,6 +9,7 @@
     "allowJs": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "removeComments": true,
     "forceConsistentCasingInFileNames": true,
     "typeRoots": ["./node_modules/@types", "./src/types"],
     "lib": ["esnext", "dom", "dom.iterable"]

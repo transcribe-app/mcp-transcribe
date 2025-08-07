@@ -1,5 +1,5 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.3",
   "dxt_version": "0.1",
   "name": "Transcribe.com tools",
   "description": "Essential tools for transcribing audio and video files and converting audio into text",
@@ -34,7 +34,16 @@
   },
   "tools": [
     {
-      "name": "transcribe-file-convert-to-text"
+      "name": "convert-to-text"
+    },
+    {
+      "name": "read-transcriptions"
+    },
+    {
+      "name": "update-transcription"
+    },
+    {
+      "name": "get-balance"
     }
   ],
   "user_config": {

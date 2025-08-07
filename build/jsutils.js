@@ -49,21 +49,19 @@ exports.urlParse = urlParse;
 exports.uriSplit = uriSplit;
 exports.isYoutubeUrl = isYoutubeUrl;
 function coalesce(value, def) {
-    if (value === undefined || value === null) { // Null check
+    if (value === undefined || value === null) {
         return def;
     }
-    if (typeof value == 'number' && value != 0 && !value) { // NaN check
+    if (typeof value == 'number' && value != 0 && !value) {
         return def;
     }
     return value;
 }
 function safeFloat(text) {
-    // IMPORTANT: Any non-digital postfix removed
     if (text != null && typeof (text) === "number") {
         if (isNaN(text)) {
             text = 0.0;
         }
-        // Already float
         return text;
     }
     if (text == null) {
@@ -77,9 +75,7 @@ function safeFloat(text) {
     return parseFloat(text);
 }
 function safeInt(text) {
-    // IMPORTANT: Any non-digital postfix removed
     if (text != null && typeof (text) === "number") {
-        // Already float
         return Math.floor(text);
     }
     if (text == null || text.length == 0) {
@@ -116,12 +112,10 @@ function isNumber(value) {
     return typeof value === 'number';
 }
 function isArray(value) {
-    // if (Object.prototype.toString.call(results) === '[object Array]') {
     return Array.isArray(value);
 }
 function toArray(input, withReverse = false) {
     var ret = new Array();
-    //console.log("toArray", input);
     if (input != null) {
         if (withReverse) {
             for (var i = input.length - 1; i >= 0; i--) {
@@ -174,7 +168,6 @@ function unixstamp_rel() {
     return unixstamp() - _global_srel;
 }
 function UUID() {
-    //    return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
     var result, i, j;
     result = '';
     for (j = 0; j < 32; j++) {
@@ -191,17 +184,14 @@ function dbgClone(xobj, dbgUnixstamp, dbgStrings) {
         return null;
     }
     if (dbgUnixstamp && (isString(xobj) || isNumber(xobj))) {
-        // Check for timestamp
         var objCopy = null;
         try {
             var intval = parseInt(xobj);
             if (("" + intval).length == "1566066289".length) {
-                intval = intval * 1000; // No millisec -> with millisec
+                intval = intval * 1000;
             }
             if (("" + intval).length == "1659793662000".length) {
                 if (("" + intval).indexOf("16") == 0 || ("" + intval).indexOf("15") == 0 || ("" + intval).indexOf("14") == 0) {
-                    // Unixstamp
-                    //console.log("-- upd:", key, xobj, intval);
                     objCopy = ("" + intval) + "... <" + (new Date(intval)).toString() + ">";
                 }
             }
@@ -255,11 +245,6 @@ function dbgTYPE(obj) {
 }
 function dbgJSON(object) {
     if ((object instanceof Error) || (object instanceof MediaError)) {
-        // if (object.stack) {
-        //	 console.error('\nStacktrace:')
-        //	 console.error('====================')
-        //	 console.error(object.stack);
-        // }
         var error = {};
         Object.getOwnPropertyNames(Object.getPrototypeOf(object))?.forEach(function (propName) {
             error[propName] = object[propName];
@@ -272,7 +257,7 @@ function dbgJSON(object) {
     return JSON.stringify(object);
 }
 function objClone(obj) {
-    if (obj == null) { // null, undefined
+    if (obj == null) {
         return null;
     }
     if (isArray(obj)) {
@@ -306,7 +291,7 @@ function clog(itm1, itm2, itm3, itm4, itm5) {
         console.log(itm1);
     }
     var currentDate = '[' + new Date().toUTCString() + '] ';
-    var line = currentDate; // parseInt(new Date().getTime())+": ";
+    var line = currentDate;
     if (itm1 != null) {
         line += safeStr(JSON.stringify(dbgClone(itm1), null, 2), 500, true);
     }
@@ -331,7 +316,6 @@ function clog(itm1, itm2, itm3, itm4, itm5) {
     }
     clog_lines.push(line);
 }
-// =======================
 function isValidDate(d) {
     return d instanceof Date && !isNaN(d);
 }
@@ -351,9 +335,8 @@ function dateString(unixstamp, withTime = null) {
     if (unixstamp == null || unixstamp <= 1) {
         return null;
     }
-    unixstamp = parseInt(unixstamp); // No floats
+    unixstamp = parseInt(unixstamp);
     if (("" + unixstamp).length <= "1627304486".length) {
-        // Need with milliseconds
         unixstamp = unixstamp * 1000;
     }
     let date = new Date(unixstamp);
@@ -362,7 +345,6 @@ function dateString(unixstamp, withTime = null) {
         if (withTime == true) {
             dateString = dateString + " " + date.toLocaleTimeString(navigator.language);
         }
-        //console.log("- dateString", unixstamp, date, dateString);
         return dateString;
     }
     return null;
@@ -398,13 +380,9 @@ function strHash(keyString) {
     }
     hash += hash << 3;
     hash ^= hash >> 11;
-    //4,294,967,295 is FFFFFFFF, the maximum 32 bit unsigned integer value, used here as a mask.
     return (((hash + (hash << 15)) & 4294967295) >>> 0).toString(16);
 }
 ;
-//  A formatted version of a popular md5 implementation.
-//  Original copyright (c) Paul Johnston & Greg Holt.
-//  The function itself is now 42 lines long.
 function strMD5(inputString) {
     var hc = "0123456789abcdef";
     function rh(n) { var j, s = ""; for (j = 0; j <= 3; j++)
@@ -515,7 +493,7 @@ function strFromPercent(frac) {
 }
 function strFromTime(time) {
     time = safeFloat(time);
-    var sec_num = parseInt(time, 10); // don't forget the second param
+    var sec_num = parseInt(time, 10);
     var minutes = Math.floor(sec_num / 60);
     var seconds = sec_num - (minutes * 60);
     if (minutes < 10) {
@@ -559,7 +537,6 @@ function isBrowserSafary() {
         return false;
     }
     if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
-        // it's safari
         return true;
     }
     return false;
@@ -612,14 +589,11 @@ function isBrowserDev(hostname) {
     return 0;
 }
 function getBrowserPlatform() {
-    // 2022 way of detecting. Note : this userAgentData feature is available only in secure contexts (HTTPS)
     if (typeof navigator.userAgentData !== 'undefined' && navigator.userAgentData != null) {
         return navigator.userAgentData.platform;
     }
-    // Deprecated but still works for most of the browser
     if (typeof navigator.platform !== 'undefined') {
         if (typeof navigator.userAgent !== 'undefined' && /android/.test(navigator.userAgent.toLowerCase())) {
-            // android device’s navigator.platform is often set as 'linux', so let’s use userAgent for them
             return 'android';
         }
         return navigator.platform;
@@ -646,7 +620,6 @@ function isLinux() {
     return false;
 }
 function safeFileName(text) {
-    // File-safe naming
     if (!text) {
         return "";
     }
@@ -678,19 +651,18 @@ function dbgSaveBlob(blob, fileName) {
     window.URL.revokeObjectURL(url);
 }
 function urlParse(url) {
-    // https://stackoverflow.com/questions/736513/how-do-i-parse-a-url-into-hostname-and-path-in-javascript
     var m = url.match(/^((?:([^:\/?#]+:)(?:\/\/))?((?:([^\/?#:]*):([^\/?#:]*)@)?([^\/?#:]*)(?::([^\/?#:]*))?))?([^?#]*)(\?[^#]*)?(#.*)?$/), r = {
-        hash: m[10] || "", // #asd
-        host: m[3] || "", // localhost:257
-        hostname: m[6] || "", // localhost
-        href: m[0] || "", // http://username:password@localhost:257/deploy/?asd=asd#asd
-        origin: m[1] || "", // http://username:password@localhost:257
-        pathname: m[8] || (m[1] ? "/" : ""), // /deploy/
-        port: m[7] || "", // 257
-        protocol: m[2] || "", // http:
-        search: m[9] || "", // ?asd=asd
-        username: m[4] || "", // username
-        password: m[5] || "" // password
+        hash: m[10] || "",
+        host: m[3] || "",
+        hostname: m[6] || "",
+        href: m[0] || "",
+        origin: m[1] || "",
+        pathname: m[8] || (m[1] ? "/" : ""),
+        port: m[7] || "",
+        protocol: m[2] || "",
+        search: m[9] || "",
+        username: m[4] || "",
+        password: m[5] || ""
     };
     if (r.protocol.length == 2) {
         r.protocol = "file:///" + r.protocol.toUpperCase();
@@ -712,7 +684,7 @@ function uriSplit(uri) {
         console.log('uri_split: failed to parse uri: [' + uri + ']', parsed);
         return null;
     }
-    path = path.substr(1); // removing start slash
+    path = path.substr(1);
     return [bucket, path];
 }
 function isYoutubeUrl(inUrl) {
