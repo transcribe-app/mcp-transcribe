@@ -51,7 +51,7 @@ During installation, you'll be prompted to configure MCP integration URL. Paste 
 - Sign in to the Transcribe [online editor](https://transcribe.com/app)
 - Copy your private URL from Automation popup
 
-🔹 Before installing the server, ensure you have Node.js
+🔹 Before installing the server, ensure you have Node.js and Git
 - Download from: https://nodejs.org/
 - Verify Node with: node --version
 - Verify NPX with: npx --version
