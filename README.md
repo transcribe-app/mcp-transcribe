@@ -22,25 +22,25 @@ Transcribe MCP instantly connects your account to assistants like Claude, Windsu
 - Sign in to the Transcribe [online editor](https://transcribe.com/app)
 - Copy your private URL from Automation popup
 
-🔹 Download pre-built Desktop Extension (DXT): [Download DXT](https://transcribe.com/mcp-integration#jumpto=mcp_download_dxt)
+🔹 Download pre-built MCP Bundle (MCPB): [Click Here](https://transcribe.com/mcp-integration#jumpto=mcp_download_mcpb)
 
-📦 The DXT includes:
+📦 The MCPB includes:
 
 - ✅ One-click installation in Claude Desktop
 - ✅ Secure environment variable configuration
 - ✅ Automatic dependency management
 - ✅ Built-in error handling and debugging
-- ✅ The DXT file is automatically updated for the latest features and fixes
+- ✅ The MCPB file is automatically updated for the latest features and fixes
 
 ### Option 1: Double-Click Installation (Recommended)
-- Double-click the .dxt file
+- Double-click the .mcpb file
 - Claude Desktop will automatically install the extension
 - Follow the configuration prompts
 
 ### Option 2: Manual Installation
 - Open Claude Desktop
 - Go to Settings → Extensions
-- Click "Install Extension" and select the .dxt file
+- Click "Install Extension" and select the .mcpb file
 
 ### Configuration
 During installation, you'll be prompted to configure MCP integration URL. Paste your private URL.
