@@ -1,6 +1,6 @@
 {
-  "version": "1.0.3",
-  "dxt_version": "0.1",
+  "version": "1.0.4",
+  "manifest_version": "0.2",
   "name": "Transcribe.com tools",
   "description": "Essential tools for transcribing audio and video files and converting audio into text",
   "author": {

@@ -146,13 +146,16 @@ export function UUID(){
 	return result;
 }
 
-export function dbgClone(xobj, dbgUnixstamp, dbgStrings){
+export function dbgClone(xobj, dbgUnixstamp, dbgStrings, dbgMaxRecursion){
+	if(!dbgMaxRecursion || dbgMaxRecursion <= 0){
+		return "<...>";
+	}
 	if(xobj == null){
 		return null;
 	}
 	if(dbgUnixstamp && (isString(xobj) || isNumber(xobj))){
 		// Check for timestamp
-		var objCopy = null;
+		let objCopy = null;
 		try{
 			var intval = parseInt(xobj);
 			if((""+intval).length == "1566066289".length){
@@ -171,7 +174,7 @@ export function dbgClone(xobj, dbgUnixstamp, dbgStrings){
 		}
 	}
 	if(isString(xobj)){
-		var objCopy = ""+xobj;
+		let objCopy = ""+xobj;
 		if(safeInt(dbgStrings) > 0 && objCopy.length > dbgStrings){
 			objCopy = objCopy.substr(0, dbgStrings)+"... <length:"+objCopy.length+">";
 		}
@@ -181,10 +184,10 @@ export function dbgClone(xobj, dbgUnixstamp, dbgStrings){
 		return xobj;
 	}
 	if(isArray(xobj)){
-		var objCopy = [];
+		let objCopy = [];
 		for(var i=0; i < xobj.length;i++){
 			try{
-				var itmCopy = dbgClone(xobj[i], dbgUnixstamp, dbgStrings);
+				let itmCopy = dbgClone(xobj[i], dbgUnixstamp, dbgStrings, dbgMaxRecursion-1);
 				objCopy[i] = itmCopy;
 			}catch(e){};
 		}
@@ -195,10 +198,10 @@ export function dbgClone(xobj, dbgUnixstamp, dbgStrings){
 	for(var key of keys) {
 		try{
 			let fieldVal = xobj[key];
-			if(!field){
+			if(!fieldVal){
 				continue;
 			}
-			var itmCopy = dbgClone(fieldVal, dbgUnixstamp, dbgStrings);
+			let itmCopy = dbgClone(fieldVal, dbgUnixstamp, dbgStrings, dbgMaxRecursion-1);
 			objCopy[key] = itmCopy;
 		}catch(e){};
 	}
@@ -262,25 +265,25 @@ export function clog(itm1,itm2,itm3,itm4,itm5) {
 	var currentDate = '[' + new Date().toUTCString() + '] ';
 	var line = currentDate; // parseInt(new Date().getTime())+": ";
 	if(itm1 != null){
-		line += safeStr(JSON.stringify(dbgClone(itm1), null, 2), 500, true);
+		line += safeStr(JSON.stringify(dbgClone(itm1, false, 500, 4), null, 2), 500, true);
 	}else{
 		line += "null";
 	}
 	if(itm2 != null){
 		line += " ";
-		line += safeStr(JSON.stringify(dbgClone(itm2), null, 2), 500, true);
+		line += safeStr(JSON.stringify(dbgClone(itm2, false, 500, 4), null, 2), 500, true);
 	}
 	if(itm3 != null){
 		line += " ";
-		line += safeStr(JSON.stringify(dbgClone(itm3), null, 2), 500, true);
+		line += safeStr(JSON.stringify(dbgClone(itm3, false, 500, 4), null, 2), 500, true);
 	}
 	if(itm4 != null){
 		line += " ";
-		line += safeStr(JSON.stringify(dbgClone(itm4), null, 2), 500, true);
+		line += safeStr(JSON.stringify(dbgClone(itm4, false, 500, 4), null, 2), 500, true);
 	}
 	if(itm5 != null){
 		line += " ";
-		line += safeStr(JSON.stringify(dbgClone(itm5), null, 2), 500, true);
+		line += safeStr(JSON.stringify(dbgClone(itm5, false, 500, 4), null, 2), 500, true);
 	}
 	clog_lines.push(line);
 }

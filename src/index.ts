@@ -11,7 +11,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as jsutils from './jsutils.js';
 
-let g_mcp_server_version = '1.0.3'; // Auto-replaced (by regex)
+let g_mcp_server_version = '1.0.4'; // Auto-replaced (by regex)
 let g_api_url = jsutils.safeStr(process.env["MCP_INTEGRATION_URL"]);
 let g_debug_file = jsutils.safeStr(process.env["MCP_DEBUG_FILE"]);
 let g_max_upload_size = 300*1000*1000;
