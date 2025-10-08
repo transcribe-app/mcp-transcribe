@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
-  "name": "io.github.transcribe-app/mcp-transcribe",
+  "name": "io.github.IPv6/mcp-transcribe",
   "description": "MCP-Transcribe server allows LLMs to interact with the text content of audio/video files",
   "repository": {
     "url": "https://github.com/transcribe-app/mcp-transcribe",
