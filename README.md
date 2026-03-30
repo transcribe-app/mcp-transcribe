@@ -105,3 +105,8 @@ List of tools is expanded with each new version.
 ### Extension Won't Install
 - Ensure you have the latest Claude Desktop version
 - Check that `node` is installed and in your PATH
+
+## Hosted deployment
+
+A hosted deployment is available on [Fronteir AI](https://fronteir.ai/mcp/transcribe-app-mcp-transcribe).
+
