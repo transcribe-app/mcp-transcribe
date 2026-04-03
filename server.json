@@ -6,13 +6,13 @@
     "url": "https://github.com/transcribe-app/mcp-transcribe",
     "source": "github"
   },
-  "version": "1.0.5",
+  "version": "1.0.4",
   "packages": [
     {
       "registryType": "mcpb",
-      "identifier": "https://github.com/transcribe-app/mcp-transcribe/releases/download/v1.0.5/transcribe-com-v1.0.5.mcpb",
-      "version": "1.0.5",
-      "fileSha256": "06a2426f29a8fda51a7ab17561c6bc2375578784a5c286718bfd7d5514cbd58e",
+      "identifier": "https://github.com/transcribe-app/mcp-transcribe/releases/download/v1.0.4/transcribe-com-v1.0.4.mcpb",
+      "version": "1.0.4",
+      "fileSha256": "720278617e2a55372919f4ca33bb6298e1e58433f4148fe88b86463fad07bdab",
       "transport": {
         "type": "stdio"
       },
